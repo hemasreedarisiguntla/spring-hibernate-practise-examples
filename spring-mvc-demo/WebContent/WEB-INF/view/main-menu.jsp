@@ -10,9 +10,9 @@
 <a href="showForm">Hello World form</a>
 
 <hr>
-<!-- 
+ 
 <a href="student/showForm">Student Registration form</a>
- -->
+
 </body>
 
 </html>
