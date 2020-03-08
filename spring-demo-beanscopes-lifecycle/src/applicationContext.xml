@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans">
+	
+		<!-- 
+	Add a logger config to see logging messages.		
+	- For more detailed logs, set values to "FINEST"
+	- For info on logging levels, see: http://www.vogella.com/tutorials/Logging/article.html
+ -->
+    <bean id="myLoggerConfig" class="com.hemasreepractise.springdemo.MyLoggerConfig" init-method="initLogger">
+    	<property name="rootLoggerLevel" value="FINE" />
+    	<property name="printedLoggerLevel" value="FINE"/>
+    </bean>
+	
+	<!--bean scope is set to singleton, be default it is singleton-->	
+	<bean id="myCricketCoach"
+	class="com.hemasreepractise.springdemo.CricketCoach" scope="singleton" 
+	init-method="doMyStartupStuff" destroy-method="doMyDestroyStuff"></bean>
+	
+	<!--bean scope is set to singleton, be default it is singleton-->	
+	<bean id="myHockeyCoach"
+	class="com.hemasreepractise.springdemo.HockeyCoach" scope="prototype"
+	init-method="doMyStartupStuff" destroy-method="doMyDestroyStuff"></bean>
+	
+	<!-- Bean custom processor to handle calling destroy methods on prototype scoped beans -->
+    <bean id="customProcessor"
+    		class="com.hemasreepractise.springdemo.MyCustomBeanProcessor">
+   	</bean>
+	
+
+
+</beans>
